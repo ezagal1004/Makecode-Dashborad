@@ -12,7 +12,7 @@ import AddProjectModal from "./components/AddProjectModal";
 import EditProjectModal from "./components/EditProjectModal";
 import NavigationHub from './components/NavigationHub';
 
-const schools = ["Beryl", "Hickory", "Banning", "Dodson"];
+const schools = ["Beryl", "Hickory"];
 
 export default function App() {
   // State management code remains the same
