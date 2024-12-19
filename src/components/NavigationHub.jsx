@@ -1,14 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, Plus, School } from "lucide-react";
+import { Home, Plus, School, LogOut } from "lucide-react";
 import { useState } from "react";
 
-export default function NavigationHub({ onAddClick, currentPage, onPageChange }) {
+export default function NavigationHub({ onAddClick, currentPage, onPageChange, onLogout }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const pages = [
     { id: 'home', icon: Home, label: 'Home' },
     { id: 'schools', icon: School, label: 'Schools' },
-    { id: 'add', icon: Plus, label: 'Add Project' }
+    { id: 'add', icon: Plus, label: 'Add Project' },
+    { id: 'logout', icon: LogOut, label: 'Logout', onClick: onLogout }
   ];
 
   return (
@@ -25,7 +26,9 @@ export default function NavigationHub({ onAddClick, currentPage, onPageChange })
           <motion.button
             key={page.id}
             onClick={() => {
-              if (page.id === 'add') {
+              if (page.onClick) {
+                page.onClick();
+              } else if (page.id === 'add') {
                 onAddClick();
               } else {
                 onPageChange(page.id);

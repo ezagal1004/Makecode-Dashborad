@@ -107,6 +107,12 @@ export default function App() {
     remove(projectRef);
   };
 
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    // Reset any necessary state here
+    setCurrentPage('home');
+  };
+
   // If not authenticated, show login
   if (!isAuthenticated) {
     return (
@@ -195,6 +201,7 @@ export default function App() {
           setShowSchoolSelect(true);
           setShowAddModal(true);
         }}
+        onLogout={handleLogout}
       />
 
       {/* Modals */}
