@@ -14,6 +14,7 @@ import EditProjectModal from "./components/EditProjectModal";
 import NavigationHub from './components/NavigationHub';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
+import LogoutButton from './components/LogoutButton';
 
 const schools = ["Beryl", "Hickory"];
 
@@ -131,7 +132,7 @@ export default function App() {
       className="min-h-screen bg-cover bg-center bg-fixed"
       style={{ backgroundImage: `url(${bgImg})` }}
     >
-      <div className="max-w-6xl mx-auto p-4 sm:p-8">
+      <div className="max-w-6xl mx-auto p-4 sm:p-8 pb-24">
         <motion.div
           layout
           className="bg-white/10 backdrop-blur-xl rounded-xl border border-white/10 
@@ -201,8 +202,9 @@ export default function App() {
           setShowSchoolSelect(true);
           setShowAddModal(true);
         }}
-        onLogout={handleLogout}
       />
+
+      <LogoutButton onLogout={handleLogout} />
 
       {/* Modals */}
       <AnimatePresence>
