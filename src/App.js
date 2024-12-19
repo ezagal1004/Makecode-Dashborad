@@ -13,10 +13,13 @@ import AddProjectModal from "./components/AddProjectModal";
 import EditProjectModal from "./components/EditProjectModal";
 import NavigationHub from './components/NavigationHub';
 import Dashboard from './components/Dashboard';
+import Login from './components/Login';
 
 const schools = ["Beryl", "Hickory"];
 
 export default function App() {
+  // Add authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   // State management code remains the same
   const [selectedSchool, setSelectedSchool] = useState(schools[0]);
   const [projects, setProjects] = useState({});
@@ -104,6 +107,19 @@ export default function App() {
     remove(projectRef);
   };
 
+  // If not authenticated, show login
+  if (!isAuthenticated) {
+    return (
+      <div
+        className="min-h-screen bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: `url(${bgImg})` }}
+      >
+        <Login onLogin={setIsAuthenticated} />
+      </div>
+    );
+  }
+
+  // Rest of your existing App.js code
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-fixed"
