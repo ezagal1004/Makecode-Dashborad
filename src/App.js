@@ -5,12 +5,14 @@ import { Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import bgImg from "./Images/life-s-captured-sparks-omBEgDTkzLw-unsplash.webp";
 
+
 // Components
 import SchoolTabs from "./components/SchoolTabs";
 import ProjectList from "./components/ProjectList";
 import AddProjectModal from "./components/AddProjectModal";
 import EditProjectModal from "./components/EditProjectModal";
 import NavigationHub from './components/NavigationHub';
+import Dashboard from './components/Dashboard';
 
 const schools = ["Beryl", "Hickory"];
 
@@ -25,6 +27,7 @@ export default function App() {
   const [newLink, setNewLink] = useState("");
   const [currentPage, setCurrentPage] = useState('schools');
   const [showSchoolSelect, setShowSchoolSelect] = useState(false);
+  const [allProjects, setAllProjects] = useState({});
 
 
 
@@ -35,6 +38,13 @@ export default function App() {
       setProjects(snapshot.val() || {});
     });
   }, [selectedSchool]);
+
+  useEffect(() => {
+    const allProjectsRef = ref(database, 'schools');
+    onValue(allProjectsRef, (snapshot) => {
+      setAllProjects(snapshot.val() || {});
+    });
+  }, []);
 
   const addProject = () => {
     if (newName && newLink) {
@@ -121,10 +131,14 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               {currentPage === 'home' ? (
-                <div className="text-sky-700">
-                  {/* Add your home page content here */}
-                  Welcome to the Dashboard
-                </div>
+                <Dashboard 
+                  projects={allProjects} 
+                  schools={schools}
+                  onSchoolSelect={(school) => {
+                    setSelectedSchool(school);
+                    setCurrentPage('schools');
+                  }}
+                />
               ) : (
                 <div>
                   <div className="flex items-center justify-between mb-4">
