@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Mail, Lock, AlertCircle } from "lucide-react";
+import { useState } from "react";
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -22,43 +22,44 @@ export default function Login({ onLogin }) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/10 backdrop-blur-xl rounded-xl border border-white/20 
-                   shadow-xl p-6 w-full max-w-md ring-1 ring-white/30"
+        className="bg-sky-900/40 backdrop-blur-xl rounded-2xl border border-white/20 
+                   shadow-2xl p-8 w-full max-w-md ring-1 ring-white/30"
       >
-        <h1 className="text-3xl font-semibold text-sky-700 mb-6">
-          Makecode Arcade Dashboard
-        </h1>
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+          <p className="text-sky-100/70">Sign in to access your dashboard</p>
+        </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-sky-700">Email</label>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-1">
+            <label className="text-sm font-medium text-sky-100">Email</label>
             <div className="relative">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full p-3 pl-10 rounded-lg bg-white/10 border border-white/20 
-                         placeholder-white/50 text-sky-700 focus:outline-none focus:ring-2 
-                         focus:ring-white/30 transition-all duration-300"
+                className="w-full p-3 pl-10 rounded-xl bg-white/10 border border-white/20 
+                         placeholder-white/40 text-white focus:outline-none focus:ring-2 
+                         focus:ring-sky-400/50 focus:border-transparent transition-all duration-300"
                 placeholder="Enter your email"
               />
-              <Mail className="absolute left-3 top-3.5 h-5 w-5 text-sky-700/50" />
+              <Mail className="absolute left-3 top-3.5 h-5 w-5 text-sky-500" />
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-sky-700">Password</label>
+          <div className="space-y-1">
+            <label className="text-sm font-medium text-sky-100">Password</label>
             <div className="relative">
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full p-3 pl-10 rounded-lg bg-white/10 border border-white/20 
-                         placeholder-white/50 text-sky-700 focus:outline-none focus:ring-2 
-                         focus:ring-white/30 transition-all duration-300"
+                className="w-full p-3 pl-10 rounded-xl bg-white/10 border border-white/20 
+                         placeholder-white/40 text-white focus:outline-none focus:ring-2 
+                         focus:ring-sky-400/50 focus:border-transparent transition-all duration-300"
                 placeholder="Enter your password"
               />
-              <Lock className="absolute left-3 top-3.5 h-5 w-5 text-sky-700/50" />
+              <Lock className="absolute left-3 top-3.5 h-5 w-5 text-sky-500" />
             </div>
           </div>
 
@@ -66,7 +67,7 @@ export default function Login({ onLogin }) {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 text-red-400 bg-red-400/10 p-3 rounded-lg"
+              className="flex items-center gap-2 text-red-300 bg-red-500/20 p-3 rounded-xl"
             >
               <AlertCircle className="h-5 w-5" />
               <span className="text-sm">{error}</span>
@@ -77,9 +78,9 @@ export default function Login({ onLogin }) {
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full py-3 bg-sky-700/20 hover:bg-sky-700/30 text-sky-700 
-                     rounded-lg transition-all duration-300 font-medium
-                     ring-1 ring-sky-700/30 hover:ring-sky-700/50"
+            className="w-full py-3 bg-sky-500 hover:bg-sky-400 text-white font-medium
+                     rounded-xl transition-all duration-300 shadow-lg
+                     hover:shadow-sky-500/25"
           >
             Sign In
           </motion.button>
