@@ -141,7 +141,7 @@ export default function App() {
           {/* Header */}
           <motion.div layout className="flex justify-between items-center mb-6">
             <h1 className="text-4xl font-semibold text-sky-700">
-              {currentPage === 'home' ? 'Dashboard' : 'Makecode Arcade Projects'}
+              {currentPage === 'home' ? 'Dashboard' : 'Ninja Tracker'}
             </h1>
           </motion.div>
 
